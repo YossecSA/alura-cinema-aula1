@@ -2,7 +2,7 @@ import { useFavoritosContext } from "context/Favoritos";
 import styles from "./Card.module.css";
 import iconFavorito from './iconFavorito.png'
 import iconNoFavorito from './iconNoFavorito.png'
-
+import { Link } from "react-router-dom";
 function Card({ id, capa, titulo }) {
 
     const {favorito, agregarFavorito} = useFavoritosContext()
@@ -11,11 +11,13 @@ function Card({ id, capa, titulo }) {
 
     return (
         <div className={styles.container}>
+            <Link className={styles.link} to={`/${id}`}>
             <img src={capa} alt={titulo} className={styles.capa} />
             <h2>{titulo}</h2>
             <img src={icon} alt="Icono favorito" onClick={()=>{
                 agregarFavorito({id, titulo, capa})
             }}/>
+            </Link>
         </div>
     );
 }
