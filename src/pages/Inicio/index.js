@@ -3,6 +3,8 @@ import Cabecera from "components/Cabecera/Cabecera";
 import Card from "components/Card";
 import Pie from "components/Pie";
 import Titulo from "components/Titulo";
+import videos from "data/db.json"
+import styles from './index.module.css'
 
 function Inicio() {
   return (
@@ -12,7 +14,13 @@ function Inicio() {
       <Titulo>
         <h1>Un lugar para guardar sus videos favoritos</h1>
       </Titulo>
-      <Card id="1" titulo="gato" capa=""/>
+      <section className={styles.container}>
+        {
+          videos.map((video) => {
+            return <Card {...video} key={video.id}/>
+          })
+        }
+      </section>
       <Pie />
     </>
   );
